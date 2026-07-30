@@ -188,7 +188,7 @@ function App() {
                 <strong>Trace-verified by the DataSpace team.</strong>
                 We verify submissions and execution traces; participant systems are not rerun by us.
               </p>
-              <span>DataSpace v1.0</span>
+              <span>410-task release</span>
             </div>
 
             <Leaderboard methods={leaderboardMethods} />
