@@ -37,6 +37,14 @@ export function SearchIcon(props: IconProps) {
   )
 }
 
+export function ChevronDownIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="m7 10 5 5 5-5" />
+    </svg>
+  )
+}
+
 export function GithubIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>

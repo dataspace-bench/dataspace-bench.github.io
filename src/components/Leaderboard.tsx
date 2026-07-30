@@ -1,9 +1,15 @@
-import { useMemo, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import type { LeaderboardMethod } from '../data/leaderboard'
-import { GithubIcon, SearchIcon } from './Icons'
+import { CheckIcon, ChevronDownIcon, GithubIcon, SearchIcon } from './Icons'
 import { MethodDrawer } from './MethodDrawer'
 
 type SortMode = 'accuracy' | 'cost' | 'recent'
+
+const sortOptions: { value: SortMode; label: string }[] = [
+  { value: 'accuracy', label: 'Accuracy' },
+  { value: 'cost', label: 'Cost / task' },
+  { value: 'recent', label: 'Most recent' },
+]
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat('en', {
@@ -15,7 +21,27 @@ function formatDate(value: string) {
 export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
   const [query, setQuery] = useState('')
   const [sort, setSort] = useState<SortMode>('accuracy')
+  const [sortOpen, setSortOpen] = useState(false)
   const [selected, setSelected] = useState<LeaderboardMethod | null>(null)
+  const sortMenuRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    if (!sortOpen) return
+
+    const closeOnOutsideClick = (event: PointerEvent) => {
+      if (!sortMenuRef.current?.contains(event.target as Node)) setSortOpen(false)
+    }
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') setSortOpen(false)
+    }
+
+    document.addEventListener('pointerdown', closeOnOutsideClick)
+    window.addEventListener('keydown', closeOnEscape)
+    return () => {
+      document.removeEventListener('pointerdown', closeOnOutsideClick)
+      window.removeEventListener('keydown', closeOnEscape)
+    }
+  }, [sortOpen])
 
   const canonicalRanking = useMemo(
     () =>
@@ -61,14 +87,41 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
             placeholder="Search method or organization"
           />
         </label>
-        <label className="sort-field">
+        <div className="sort-field">
           <span>Sort by</span>
-          <select value={sort} onChange={(event) => setSort(event.target.value as SortMode)}>
-            <option value="accuracy">Accuracy</option>
-            <option value="cost">Cost / task</option>
-            <option value="recent">Most recent</option>
-          </select>
-        </label>
+          <div className={`sort-control ${sortOpen ? 'sort-control--open' : ''}`} ref={sortMenuRef}>
+            <button
+              className="sort-trigger"
+              type="button"
+              aria-haspopup="listbox"
+              aria-expanded={sortOpen}
+              onClick={() => setSortOpen((open) => !open)}
+            >
+              <span>{sortOptions.find((option) => option.value === sort)?.label}</span>
+              <ChevronDownIcon />
+            </button>
+            {sortOpen && (
+              <div className="sort-menu" role="listbox" aria-label="Sort leaderboard">
+                {sortOptions.map((option) => (
+                  <button
+                    type="button"
+                    role="option"
+                    aria-selected={sort === option.value}
+                    className={sort === option.value ? 'sort-option sort-option--selected' : 'sort-option'}
+                    key={option.value}
+                    onClick={() => {
+                      setSort(option.value)
+                      setSortOpen(false)
+                    }}
+                  >
+                    <span>{option.label}</span>
+                    {sort === option.value && <CheckIcon />}
+                  </button>
+                ))}
+              </div>
+            )}
+          </div>
+        </div>
       </div>
 
       <div className="leaderboard-frame">
