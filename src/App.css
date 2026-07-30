@@ -127,7 +127,7 @@
   margin-bottom: 20px;
   color: #5e56b9;
   font-family: 'DM Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.055em;
   text-decoration: none;
@@ -236,7 +236,7 @@
   margin: 0 0 14px;
   color: #788297;
   font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
+  font-size: 10.5px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -269,7 +269,7 @@
 .facts-grid span {
   margin-top: 6px;
   color: #778196;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .modality-line {
@@ -286,7 +286,7 @@
   border: 1px solid #e5e2ff;
   border-radius: 5px;
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px;
+  font-size: 9.5px;
   letter-spacing: 0.02em;
 }
 
@@ -304,7 +304,7 @@
   margin: 0 0 4px;
   color: #8278d8;
   font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -327,7 +327,7 @@
   grid-template-columns: 92px minmax(0, 1fr) auto;
   align-items: center;
   gap: 17px;
-  padding: 9px 0;
+  padding: 12px 0;
   color: inherit;
   border-bottom: 1px solid #edf0f5;
   text-decoration: none;
@@ -345,7 +345,7 @@
 .news-list time {
   color: #8a94a7;
   font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
+  font-size: 11px;
   white-space: nowrap;
 }
 
@@ -359,13 +359,13 @@
 
 .news-list strong {
   color: #273148;
-  font-size: 12.5px;
+  font-size: 14px;
 }
 
 .news-list span {
   color: #7c8698;
-  font-size: 11px;
-  line-height: 1.45;
+  font-size: 13px;
+  line-height: 1.5;
 }
 
 .news-list svg {
@@ -397,15 +397,15 @@
 .section-topline > div:first-child > p:last-child {
   margin: 8px 0 0;
   color: #717c90;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .verified-note {
   display: flex;
   align-items: center;
   gap: 10px;
-  max-width: 315px;
-  padding: 10px 12px;
+  max-width: 345px;
+  padding: 11px 13px;
   color: #5f697c;
   background: #f7f7fc;
   border: 1px solid #e4e4ef;
@@ -423,13 +423,13 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 9.5px;
+  font-size: 11px;
   line-height: 1.4;
 }
 
 .verified-note strong {
   color: #303a51;
-  font-size: 10.5px;
+  font-size: 12px;
 }
 
 .leaderboard-toolbar {
@@ -437,7 +437,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 12px;
-  padding: 12px 13px;
+  padding: 13px 14px;
   background: #f7f8fb;
   border: 1px solid var(--line);
   border-bottom: 0;
@@ -449,7 +449,7 @@
   align-items: center;
   gap: 7px;
   width: min(330px, 100%);
-  min-height: 34px;
+  min-height: 38px;
   padding: 0 10px;
   background: #fff;
   border: 1px solid #dfe4ed;
@@ -457,8 +457,8 @@
 }
 
 .search-field svg {
-  width: 13px;
-  height: 13px;
+  width: 14px;
+  height: 14px;
   flex: 0 0 auto;
   color: #8b95a7;
 }
@@ -469,7 +469,7 @@
   background: transparent;
   border: 0;
   outline: 0;
-  font-size: 11.5px;
+  font-size: 13px;
 }
 
 .search-field input::placeholder {
@@ -481,18 +481,18 @@
   align-items: center;
   gap: 8px;
   color: #8a93a4;
-  font-size: 10px;
+  font-size: 11.5px;
 }
 
 .sort-field select {
-  min-height: 34px;
+  min-height: 38px;
   padding: 0 28px 0 10px;
   color: #354056;
   background: #fff;
   border: 1px solid #dfe4ed;
   border-radius: 7px;
   outline: 0;
-  font-size: 11px;
+  font-size: 12.5px;
 }
 
 .leaderboard-frame {
@@ -514,13 +514,13 @@
 }
 
 .leaderboard-table th {
-  height: 39px;
+  height: 44px;
   padding: 0 14px;
   color: #8a94a7;
   background: #fbfbfd;
   border-bottom: 1px solid var(--line);
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px;
+  font-size: 10.5px;
   font-weight: 600;
   letter-spacing: 0.065em;
   text-align: left;
@@ -529,11 +529,11 @@
 }
 
 .leaderboard-table td {
-  height: 65px;
+  height: 72px;
   padding: 0 14px;
   color: #4b566c;
   border-bottom: 1px solid #edf0f5;
-  font-size: 11px;
+  font-size: 13px;
 }
 
 .leaderboard-table tbody tr:last-child td {
@@ -563,15 +563,15 @@
 
 .rank-mark {
   display: inline-flex;
-  width: 27px;
-  height: 27px;
+  width: 30px;
+  height: 30px;
   align-items: center;
   justify-content: center;
   color: #778196;
   background: #f3f5f8;
   border-radius: 7px;
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 10.5px;
 }
 
 .rank-mark--1 {
@@ -618,13 +618,13 @@
 
 .method-cell strong {
   color: #263148;
-  font-size: 11.5px;
+  font-size: 13px;
   white-space: nowrap;
 }
 
 .method-cell small {
   color: #8993a6;
-  font-size: 9.5px;
+  font-size: 11px;
 }
 
 .organization-cell,
@@ -642,18 +642,18 @@
 }
 
 .accuracy-cell strong {
-  font-size: 14px;
+  font-size: 16px;
 }
 
 .accuracy-cell span {
   color: #8a94a6;
-  font-size: 9px;
+  font-size: 10.5px;
 }
 
 .cost-cell,
 .date-cell {
   font-family: 'DM Mono', monospace;
-  font-size: 9.5px;
+  font-size: 11.5px;
 }
 
 .muted-dash {
@@ -684,7 +684,7 @@
 
 .leaderboard-footer {
   display: flex;
-  min-height: 39px;
+  min-height: 43px;
   align-items: center;
   justify-content: space-between;
   padding: 0 14px;
@@ -692,7 +692,7 @@
   background: #fafbfc;
   border-top: 1px solid var(--line);
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px;
+  font-size: 10px;
 }
 
 .leaderboard-footer button {
@@ -702,7 +702,7 @@
   border: 0;
   cursor: pointer;
   font-family: inherit;
-  font-size: 8.5px;
+  font-size: 10px;
 }
 
 .protocol-grid {
@@ -713,7 +713,7 @@
 }
 
 .protocol-card {
-  padding: 23px 24px 22px;
+  padding: 26px 27px 25px;
   background: #fff;
   border: 1px solid var(--line);
   border-radius: 13px;
@@ -751,14 +751,14 @@
 .protocol-card__header h2 {
   margin: 0;
   color: #202a41;
-  font-size: 20px;
+  font-size: 22px;
   letter-spacing: -0.035em;
 }
 
 .protocol-card > p {
   margin: 0;
   color: #687387;
-  font-size: 11.5px;
+  font-size: 13px;
   line-height: 1.7;
 }
 
@@ -776,7 +776,7 @@
   align-items: center;
   gap: 6px;
   color: #4d596f;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .protocol-card li svg {
@@ -791,7 +791,7 @@
   align-items: center;
   gap: 6px;
   color: #6459be;
-  font-size: 10.5px;
+  font-size: 12px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -812,7 +812,7 @@
 
 .submit-steps li {
   align-items: flex-start;
-  padding: 9px;
+  padding: 10px;
   background: #f7f8fb;
   border: 1px solid #eceef3;
   border-radius: 8px;
@@ -830,7 +830,7 @@
   background: #eae8ff;
   border-radius: 50%;
   font-family: 'DM Mono', monospace;
-  font-size: 7px;
+  font-size: 8.5px;
 }
 
 .coming-soon {
@@ -838,7 +838,7 @@
   align-items: center;
   gap: 8px;
   color: #6b7689;
-  font-size: 10px;
+  font-size: 11.5px;
 }
 
 .coming-soon i {
