@@ -51,7 +51,7 @@
 .brand small {
   color: var(--ink-faint);
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 8.5px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
@@ -127,7 +127,7 @@
   margin-bottom: 20px;
   color: #5e56b9;
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 600;
   letter-spacing: 0.055em;
   text-decoration: none;
@@ -236,7 +236,7 @@
   margin: 0 0 14px;
   color: #788297;
   font-family: 'DM Mono', monospace;
-  font-size: 9px;
+  font-size: 9.5px;
   letter-spacing: 0.07em;
   text-transform: uppercase;
 }
@@ -269,7 +269,7 @@
 .facts-grid span {
   margin-top: 6px;
   color: #778196;
-  font-size: 9.5px;
+  font-size: 10px;
 }
 
 .modality-line {
@@ -286,7 +286,7 @@
   border: 1px solid #e5e2ff;
   border-radius: 5px;
   font-family: 'DM Mono', monospace;
-  font-size: 7.5px;
+  font-size: 8.5px;
   letter-spacing: 0.02em;
 }
 
@@ -304,7 +304,7 @@
   margin: 0 0 4px;
   color: #8278d8;
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px;
+  font-size: 9.5px;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -325,7 +325,7 @@
 .news-list > a {
   display: grid;
   grid-template-columns: 92px minmax(0, 1fr) auto;
-  align-items: baseline;
+  align-items: center;
   gap: 17px;
   padding: 9px 0;
   color: inherit;
@@ -345,24 +345,27 @@
 .news-list time {
   color: #8a94a7;
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px;
+  font-size: 9.5px;
   white-space: nowrap;
 }
 
 .news-list > div > div,
 .news-list > a > div {
+  display: flex;
   min-width: 0;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .news-list strong {
   color: #273148;
-  font-size: 11.5px;
+  font-size: 12.5px;
 }
 
 .news-list span {
-  margin-left: 9px;
   color: #7c8698;
-  font-size: 10.5px;
+  font-size: 11px;
+  line-height: 1.45;
 }
 
 .news-list svg {
@@ -394,7 +397,7 @@
 .section-topline > div:first-child > p:last-child {
   margin: 8px 0 0;
   color: #717c90;
-  font-size: 11.5px;
+  font-size: 12px;
 }
 
 .verified-note {
@@ -420,13 +423,13 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  font-size: 8.5px;
+  font-size: 9.5px;
   line-height: 1.4;
 }
 
 .verified-note strong {
   color: #303a51;
-  font-size: 9.5px;
+  font-size: 10.5px;
 }
 
 .leaderboard-toolbar {
@@ -466,7 +469,7 @@
   background: transparent;
   border: 0;
   outline: 0;
-  font-size: 10.5px;
+  font-size: 11.5px;
 }
 
 .search-field input::placeholder {
@@ -478,7 +481,7 @@
   align-items: center;
   gap: 8px;
   color: #8a93a4;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .sort-field select {
@@ -489,7 +492,7 @@
   border: 1px solid #dfe4ed;
   border-radius: 7px;
   outline: 0;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .leaderboard-frame {
@@ -517,7 +520,7 @@
   background: #fbfbfd;
   border-bottom: 1px solid var(--line);
   font-family: 'DM Mono', monospace;
-  font-size: 7.5px;
+  font-size: 8.5px;
   font-weight: 600;
   letter-spacing: 0.065em;
   text-align: left;
@@ -530,7 +533,7 @@
   padding: 0 14px;
   color: #4b566c;
   border-bottom: 1px solid #edf0f5;
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .leaderboard-table tbody tr:last-child td {
@@ -568,7 +571,7 @@
   background: #f3f5f8;
   border-radius: 7px;
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .rank-mark--1 {
@@ -615,13 +618,13 @@
 
 .method-cell strong {
   color: #263148;
-  font-size: 10.5px;
+  font-size: 11.5px;
   white-space: nowrap;
 }
 
 .method-cell small {
   color: #8993a6;
-  font-size: 8.5px;
+  font-size: 9.5px;
 }
 
 .organization-cell,
@@ -639,18 +642,18 @@
 }
 
 .accuracy-cell strong {
-  font-size: 13px;
+  font-size: 14px;
 }
 
 .accuracy-cell span {
   color: #8a94a6;
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .cost-cell,
 .date-cell {
   font-family: 'DM Mono', monospace;
-  font-size: 8.5px;
+  font-size: 9.5px;
 }
 
 .muted-dash {
@@ -689,7 +692,7 @@
   background: #fafbfc;
   border-top: 1px solid var(--line);
   font-family: 'DM Mono', monospace;
-  font-size: 7.5px;
+  font-size: 8.5px;
 }
 
 .leaderboard-footer button {
@@ -699,7 +702,7 @@
   border: 0;
   cursor: pointer;
   font-family: inherit;
-  font-size: 7.5px;
+  font-size: 8.5px;
 }
 
 .protocol-grid {
@@ -755,7 +758,7 @@
 .protocol-card > p {
   margin: 0;
   color: #687387;
-  font-size: 10.5px;
+  font-size: 11.5px;
   line-height: 1.7;
 }
 
@@ -773,7 +776,7 @@
   align-items: center;
   gap: 6px;
   color: #4d596f;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .protocol-card li svg {
@@ -788,7 +791,7 @@
   align-items: center;
   gap: 6px;
   color: #6459be;
-  font-size: 9.5px;
+  font-size: 10.5px;
   font-weight: 700;
   text-decoration: none;
 }
@@ -835,7 +838,7 @@
   align-items: center;
   gap: 8px;
   color: #6b7689;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .coming-soon i {
@@ -874,7 +877,7 @@
   padding-left: 16px;
   color: #8993a4;
   border-left: 1px solid var(--line);
-  font-size: 8.5px;
+  font-size: 9.5px;
 }
 
 .footer-links {
@@ -885,7 +888,7 @@
 
 .footer-links a {
   color: #667186;
-  font-size: 9px;
+  font-size: 10px;
   font-weight: 650;
   text-decoration: none;
 }
@@ -895,7 +898,7 @@
   margin: 0;
   color: #9aa2b1;
   font-family: 'DM Mono', monospace;
-  font-size: 7.5px;
+  font-size: 8.5px;
 }
 
 /* Method details */
@@ -958,7 +961,7 @@
   background: #f1efff;
   border-radius: 6px;
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
   font-weight: 600;
   text-transform: uppercase;
 }
@@ -1008,7 +1011,7 @@
   margin: 0 0 3px;
   color: #7e75d1;
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
   text-transform: uppercase;
 }
 
@@ -1022,7 +1025,7 @@
 .drawer-heading div:last-child > p:last-child {
   margin: 3px 0 0;
   color: #8992a3;
-  font-size: 9px;
+  font-size: 10px;
 }
 
 .verified-banner {
@@ -1050,19 +1053,19 @@
 }
 
 .verified-banner strong {
-  font-size: 9.5px;
+  font-size: 10.5px;
 }
 
 .verified-banner span {
   color: #6e8e86;
-  font-size: 8px;
+  font-size: 9px;
   line-height: 1.4;
 }
 
 .drawer-description {
   margin: 21px 0 0;
   color: #687387;
-  font-size: 10.5px;
+  font-size: 11.5px;
   line-height: 1.7;
 }
 
@@ -1087,7 +1090,7 @@
 
 .drawer-score-card span {
   color: #8a93a4;
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .drawer-score-card strong {
@@ -1134,14 +1137,14 @@
 
 .drawer-metadata dt {
   color: #8b94a5;
-  font-size: 8px;
+  font-size: 9px;
 }
 
 .drawer-metadata dd {
   margin: 0;
   color: #3f4a61;
   font-family: 'DM Mono', monospace;
-  font-size: 8px;
+  font-size: 9px;
   line-height: 1.45;
 }
 
@@ -1167,7 +1170,7 @@
   color: #fff;
   background: #17213a;
   border-radius: 9px;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   text-decoration: none;
 }
