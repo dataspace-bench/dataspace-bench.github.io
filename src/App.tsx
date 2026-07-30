@@ -1,388 +1,256 @@
 import { useState } from 'react'
 import './App.css'
-import { CostChart } from './components/CostChart'
 import {
-  ArrowRight,
   ArrowUpRight,
   BrandMark,
-  BracesIcon,
   CheckIcon,
-  DatabaseIcon,
-  DocumentIcon,
   DownloadIcon,
   GithubIcon,
   MailIcon,
   ShieldIcon,
-  TableIcon,
-  VideoIcon,
 } from './components/Icons'
 import { Leaderboard } from './components/Leaderboard'
-import { OrbitVisual } from './components/OrbitVisual'
 import { leaderboardMethods, resourceLinks } from './data/leaderboard'
 
-const benchmarkStats = [
-  { value: '410', label: 'traceable tasks', note: 'all inputs public' },
-  { value: '6', label: 'data modalities', note: 'structured to video' },
-  { value: '15.0', suffix: 'GB', label: 'workspace context', note: '7,439 artifacts' },
-  { value: '60', label: 'public references', note: 'for local evaluation' },
+const benchmarkFacts = [
+  { value: '410', label: 'Tasks' },
+  { value: '6', label: 'Modalities' },
+  { value: '15.0 GB', label: 'Workspaces' },
+  { value: '60', label: 'Public references' },
 ]
 
-const modalities = [
-  { label: 'CSV', icon: <TableIcon />, tone: 'lilac' },
-  { label: 'JSON', icon: <BracesIcon />, tone: 'blue' },
-  { label: 'SQLite', icon: <DatabaseIcon />, tone: 'mint' },
-  { label: 'Markdown', icon: <DocumentIcon />, tone: 'yellow' },
-  { label: 'PDF', icon: <DocumentIcon />, tone: 'coral' },
-  { label: 'Video', icon: <VideoIcon />, tone: 'violet' },
+const newsItems = [
+  {
+    date: 'Jul 2026',
+    title: 'Dataset and baselines released',
+    detail: 'All 410 task inputs and 60 public reference packages are now available.',
+  },
+  {
+    date: 'Jul 2026',
+    title: 'Initial leaderboard published',
+    detail: 'Six frontier-backbone DataSpace-Agent baselines establish the first official results.',
+  },
+  {
+    date: 'KDD Cup 2026',
+    title: 'Official Data Agent Track benchmark',
+    detail: 'DataSpace serves as the official benchmark for the KDD Cup 2026 Data Agent Track.',
+    href: resourceLinks.competition,
+  },
 ]
-
-function SectionHeading({
-  index,
-  eyebrow,
-  title,
-  description,
-}: {
-  index: string
-  eyebrow: string
-  title: string
-  description: string
-}) {
-  return (
-    <div className="section-heading">
-      <div className="section-heading__index">{index}</div>
-      <div>
-        <p className="section-eyebrow">{eyebrow}</p>
-        <h2>{title}</h2>
-        <p className="section-description">{description}</p>
-      </div>
-    </div>
-  )
-}
 
 function App() {
   const [navOpen, setNavOpen] = useState(false)
-
   const closeNav = () => setNavOpen(false)
 
   return (
-    <div className="site-shell">
+    <div className="site-shell" id="top">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="DataSpace home" onClick={closeNav}>
-          <BrandMark className="brand__mark" />
-          <span>
-            <strong>DataSpace</strong>
-            <small>Data Agent Benchmark</small>
-          </span>
-        </a>
+        <div className="header-inner">
+          <a className="brand" href="#top" aria-label="DataSpace home" onClick={closeNav}>
+            <BrandMark className="brand__mark" />
+            <span>
+              <strong>DataSpace</strong>
+              <small>Data Agent Benchmark</small>
+            </span>
+          </a>
 
-        <button
-          className={`nav-toggle ${navOpen ? 'nav-toggle--open' : ''}`}
-          type="button"
-          aria-label="Toggle navigation"
-          aria-expanded={navOpen}
-          onClick={() => setNavOpen((open) => !open)}
-        >
-          <span />
-          <span />
-        </button>
+          <button
+            className={`nav-toggle ${navOpen ? 'nav-toggle--open' : ''}`}
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded={navOpen}
+            onClick={() => setNavOpen((open) => !open)}
+          >
+            <span />
+            <span />
+          </button>
 
-        <nav className={`site-nav ${navOpen ? 'site-nav--open' : ''}`} aria-label="Primary navigation">
-          <a href="#leaderboard" onClick={closeNav}>Leaderboard</a>
-          <a href="#efficiency" onClick={closeNav}>Efficiency</a>
-          <a href="#benchmark" onClick={closeNav}>Benchmark</a>
-          <a href="#submit" onClick={closeNav}>Submit</a>
-        </nav>
+          <nav className={`site-nav ${navOpen ? 'site-nav--open' : ''}`} aria-label="Primary navigation">
+            <a href="#leaderboard" onClick={closeNav}>Leaderboard</a>
+            <a href="#evaluation" onClick={closeNav}>Evaluation</a>
+            <a href="#submit" onClick={closeNav}>Submit</a>
+          </nav>
 
-        <a className="header-code-link" href={resourceLinks.code} target="_blank" rel="noreferrer">
-          <GithubIcon />
-          <span>Code</span>
-          <ArrowUpRight />
-        </a>
+          <div className="header-links">
+            <a href={resourceLinks.dataset} target="_blank" rel="noreferrer">
+              Dataset
+              <ArrowUpRight />
+            </a>
+            <a href={resourceLinks.code} target="_blank" rel="noreferrer">
+              <GithubIcon />
+              Code
+            </a>
+          </div>
+        </div>
       </header>
 
-      <main>
-        <section className="hero-section" id="top">
-          <div className="hero-grid">
-            <div className="hero-copy">
-              <a className="competition-pill" href={resourceLinks.competition} target="_blank" rel="noreferrer">
-                <span className="competition-pill__signal" />
-                Official KDD Cup 2026 benchmark
-                <ArrowUpRight />
+      <main className="page">
+        <section className="intro-section" aria-labelledby="page-title">
+          <div className="intro-copy">
+            <a className="competition-label" href={resourceLinks.competition} target="_blank" rel="noreferrer">
+              <span />
+              KDD Cup 2026 · Official Data Agent Track Benchmark
+              <ArrowUpRight />
+            </a>
+            <h1 id="page-title">DataSpace Leaderboard</h1>
+            <p className="intro-summary">
+              Evaluating data agents on verifiable analytics over heterogeneous,
+              task-local workspaces.
+            </p>
+            <p className="intro-description">
+              Each task combines a natural-language question with files, databases,
+              long documents, or video. Agents must discover and integrate the relevant
+              evidence, then return the complete requested table.
+            </p>
+            <div className="intro-actions">
+              <a className="primary-link" href={resourceLinks.dataset} target="_blank" rel="noreferrer">
+                <DownloadIcon />
+                Download dataset
               </a>
-
-              <p className="hero-overline">VERIFIABLE ANALYTICS · HETEROGENEOUS WORKSPACES</p>
-              <h1>
-                Benchmark the agent,
-                <span>not just the answer.</span>
-              </h1>
-              <p className="hero-lead">
-                DataSpace measures whether data agents can navigate structured files,
-                databases, long documents, and video—then return the exact table a user asked for.
-              </p>
-
-              <div className="hero-actions">
-                <a className="button button--primary" href="#leaderboard">
-                  Explore leaderboard
-                  <ArrowRight />
-                </a>
-                <a className="button button--secondary" href={resourceLinks.dataset} target="_blank" rel="noreferrer">
-                  <DownloadIcon />
-                  Download dataset
-                </a>
-              </div>
-
-              <div className="hero-proof">
-                <div className="proof-stack" aria-hidden="true">
-                  <span>CSV</span>
-                  <span>DB</span>
-                  <span>PDF</span>
-                  <span>VID</span>
-                </div>
-                <p>
-                  <strong>One task-local workspace.</strong>
-                  <span>Complete tabular results, scored exactly.</span>
-                </p>
-              </div>
-            </div>
-
-            <div className="hero-visual-wrap">
-              <div className="hero-visual-label hero-visual-label--top">
-                <span>workspace</span>
-                01 / inspect
-              </div>
-              <OrbitVisual />
-              <div className="hero-visual-label hero-visual-label--bottom">
-                02 / integrate
-                <span>verify</span>
-              </div>
+              <a className="secondary-link" href={resourceLinks.code} target="_blank" rel="noreferrer">
+                <GithubIcon />
+                Evaluator &amp; baselines
+              </a>
             </div>
           </div>
 
-          <div className="stats-band">
-            {benchmarkStats.map((stat, index) => (
-              <div className="stat-card" key={stat.label}>
-                <span className="stat-card__number">0{index + 1}</span>
-                <div className="stat-card__value">
-                  {stat.value}
-                  {stat.suffix && <small>{stat.suffix}</small>}
+          <aside className="benchmark-summary" aria-label="Benchmark summary">
+            <p>Benchmark at a glance</p>
+            <div className="facts-grid">
+              {benchmarkFacts.map((fact) => (
+                <div key={fact.label}>
+                  <strong>{fact.value}</strong>
+                  <span>{fact.label}</span>
                 </div>
-                <strong>{stat.label}</strong>
-                <span>{stat.note}</span>
-              </div>
-            ))}
+              ))}
+            </div>
+            <div className="modality-line">
+              <span>CSV</span>
+              <span>JSON</span>
+              <span>SQLite</span>
+              <span>Markdown</span>
+              <span>PDF</span>
+              <span>Video</span>
+            </div>
+          </aside>
+        </section>
+
+        <section className="news-section" aria-labelledby="news-title">
+          <div className="compact-heading">
+            <p>Updates</p>
+            <h2 id="news-title">News</h2>
+          </div>
+          <div className="news-list">
+            {newsItems.map((item) => {
+              const body = (
+                <>
+                  <time>{item.date}</time>
+                  <div>
+                    <strong>{item.title}</strong>
+                    <span>{item.detail}</span>
+                  </div>
+                  {item.href && <ArrowUpRight />}
+                </>
+              )
+              return item.href ? (
+                <a key={item.title} href={item.href} target="_blank" rel="noreferrer">
+                  {body}
+                </a>
+              ) : (
+                <div key={item.title}>{body}</div>
+              )
+            })}
           </div>
         </section>
 
-        <section className="content-section leaderboard-section" id="leaderboard">
-          <div className="section-inner">
-            <SectionHeading
-              index="01"
-              eyebrow="Official leaderboard"
-              title="One benchmark. One verified score."
-              description="Every listed result is evaluated on all 410 tasks and reviewed against its submitted predictions and end-to-end traces."
-            />
-
-            <div className="verification-note">
-              <ShieldIcon />
+        <section className="leaderboard-section" id="leaderboard" aria-labelledby="leaderboard-title">
+          <div className="section-topline">
+            <div>
+              <p className="section-kicker">Official results</p>
+              <h2 id="leaderboard-title">Leaderboard</h2>
               <p>
-                <strong>Trace-verified by the DataSpace team.</strong>
-                We verify submissions and execution traces; participant systems are not rerun by us.
+                Ranked by Task Accuracy across all 410 tasks. Select a row for full result details.
               </p>
-              <span>410-task release</span>
             </div>
-
-            <Leaderboard methods={leaderboardMethods} />
-          </div>
-        </section>
-
-        <section className="content-section efficiency-section" id="efficiency">
-          <div className="section-inner">
-            <SectionHeading
-              index="02"
-              eyebrow="Efficiency"
-              title="Accuracy is only half the story."
-              description="Explore the monetary trade-off behind the official controlled baselines. Only entries with auditable API usage appear in this view."
-            />
-            <CostChart methods={leaderboardMethods} />
-          </div>
-        </section>
-
-        <section className="content-section benchmark-section" id="benchmark">
-          <div className="section-inner">
-            <SectionHeading
-              index="03"
-              eyebrow="The benchmark"
-              title="One question. A workspace full of evidence."
-              description="DataSpace replaces a preselected table with the kind of mixed, task-local workspace an analyst actually has to navigate."
-            />
-
-            <div className="benchmark-bento">
-              <article className="bento-card bento-card--workspace">
-                <div className="bento-card__heading">
-                  <span className="bento-number">A</span>
-                  <div>
-                    <p>Heterogeneous by design</p>
-                    <h3>Six modalities, one analytical path.</h3>
-                  </div>
-                </div>
-                <div className="modality-grid">
-                  {modalities.map((modality) => (
-                    <div className={`modality-chip modality-chip--${modality.tone}`} key={modality.label}>
-                      <span>{modality.icon}</span>
-                      {modality.label}
-                    </div>
-                  ))}
-                </div>
-                <p className="bento-copy">
-                  Evidence may cross files and representations, requiring discovery,
-                  extraction, joins, filtering, aggregation, and temporal reasoning.
-                </p>
-              </article>
-
-              <article className="bento-card bento-card--output">
-                <div className="bento-card__heading">
-                  <span className="bento-number">B</span>
-                  <div>
-                    <p>Exact output contract</p>
-                    <h3>A complete table, not a plausible paragraph.</h3>
-                  </div>
-                </div>
-                <div className="output-preview">
-                  <div className="output-preview__bar">
-                    <span>prediction.csv</span>
-                    <i><CheckIcon /> valid relation</i>
-                  </div>
-                  <div className="output-preview__row output-preview__row--head">
-                    <span>region</span><span>quarter</span><span>revenue</span>
-                  </div>
-                  <div className="output-preview__row">
-                    <span>APAC</span><span>2025-Q4</span><span>$18.42M</span>
-                  </div>
-                  <div className="output-preview__row">
-                    <span>EMEA</span><span>2025-Q4</span><span>$16.08M</span>
-                  </div>
-                </div>
-              </article>
-
-              <article className="bento-card bento-card--language">
-                <div className="language-orbit" aria-hidden="true">
-                  <span className="language-orbit__en">EN</span>
-                  <span className="language-orbit__zh">中</span>
-                  <i />
-                </div>
-                <div>
-                  <p>Cross-language task spaces</p>
-                  <h3>Language belongs to the whole question–workspace pair.</h3>
-                </div>
-              </article>
-
-              <article className="bento-card bento-card--evaluation">
-                <div className="evaluation-seal">
-                  <ShieldIcon />
-                  <span>semantic</span>
-                  <strong>Task Accuracy</strong>
-                </div>
-                <div>
-                  <p>Deterministic evaluation</p>
-                  <h3>Flexible about headers. Strict about the result.</h3>
-                  <ul>
-                    <li><CheckIcon /> One-to-one column alignment</li>
-                    <li><CheckIcon /> Type-aware value comparison</li>
-                    <li><CheckIcon /> Ordered or multiset rows</li>
-                  </ul>
-                </div>
-              </article>
+            <div className="verified-note">
+              <ShieldIcon />
+              <span>
+                <strong>Trace-verified</strong>
+                Predictions and execution traces reviewed by the DataSpace team
+              </span>
             </div>
           </div>
+
+          <Leaderboard methods={leaderboardMethods} />
         </section>
 
-        <section className="content-section submit-section" id="submit">
-          <div className="section-inner">
-            <SectionHeading
-              index="04"
-              eyebrow="Submit"
-              title="Built for auditable results."
-              description="Community results enter the board after official scoring and trace review. We do not require participants to hand over a runnable codebase."
-            />
-
-            <div className="submission-panel">
-              <div className="submission-flow">
-                <article>
-                  <span>01</span>
-                  <div className="submission-icon"><TableIcon /></div>
-                  <h3>Package predictions</h3>
-                  <p>Include one rectangular <code>prediction.csv</code> for every task.</p>
-                </article>
-                <div className="submission-connector"><ArrowRight /></div>
-                <article>
-                  <span>02</span>
-                  <div className="submission-icon"><DocumentIcon /></div>
-                  <h3>Attach run traces</h3>
-                  <p>Provide end-to-end logs and the exact model and system configuration.</p>
-                </article>
-                <div className="submission-connector"><ArrowRight /></div>
-                <article>
-                  <span>03</span>
-                  <div className="submission-icon"><ShieldIcon /></div>
-                  <h3>Score and review</h3>
-                  <p>We evaluate all 410 tasks, audit the traces, and publish accepted results.</p>
-                </article>
-              </div>
-
-              <div className="submission-cta">
-                <div>
-                  <MailIcon />
-                  <p>
-                    <strong>Submission channel opening soon</strong>
-                    The official email and package template will be published here.
-                  </p>
-                </div>
-                <span className="status-pill"><i /> Preparing launch</span>
+        <section className="protocol-grid">
+          <article className="protocol-card" id="evaluation">
+            <div className="protocol-card__header">
+              <span className="protocol-icon"><ShieldIcon /></span>
+              <div>
+                <p>Scoring</p>
+                <h2>Evaluation</h2>
               </div>
             </div>
-          </div>
-        </section>
+            <p>
+              The primary metric is Task Accuracy. A task is correct only when the
+              submitted table matches the complete reference result under its task configuration.
+            </p>
+            <ul>
+              <li><CheckIcon /> Header-invariant column alignment</li>
+              <li><CheckIcon /> Type-aware value comparison</li>
+              <li><CheckIcon /> Ordered sequence or unordered multiset rows</li>
+              <li><CheckIcon /> Missing or invalid predictions count as incorrect</li>
+            </ul>
+            <a href={resourceLinks.code} target="_blank" rel="noreferrer">
+              View the evaluator
+              <ArrowUpRight />
+            </a>
+          </article>
 
-        <section className="resource-section">
-          <div className="section-inner">
-            <div className="resource-intro">
-              <p>Build with DataSpace</p>
-              <h2>Everything you need to start evaluating.</h2>
+          <article className="protocol-card" id="submit">
+            <div className="protocol-card__header">
+              <span className="protocol-icon protocol-icon--mint"><MailIcon /></span>
+              <div>
+                <p>Community results</p>
+                <h2>Submit</h2>
+              </div>
             </div>
-            <div className="resource-grid">
-              <a href={resourceLinks.dataset} target="_blank" rel="noreferrer">
-                <span className="resource-icon resource-icon--yellow"><DownloadIcon /></span>
-                <div><strong>Dataset</strong><small>410 public task inputs</small></div>
-                <ArrowUpRight />
-              </a>
-              <a href={resourceLinks.code} target="_blank" rel="noreferrer">
-                <span className="resource-icon resource-icon--lilac"><GithubIcon /></span>
-                <div><strong>Code</strong><small>Evaluator and baselines</small></div>
-                <ArrowUpRight />
-              </a>
-              <a href={resourceLinks.competition} target="_blank" rel="noreferrer">
-                <span className="resource-icon resource-icon--mint"><ShieldIcon /></span>
-                <div><strong>KDD Cup 2026</strong><small>Official Data Agent track</small></div>
-                <ArrowUpRight />
-              </a>
+            <p>
+              Submit predictions for all 410 tasks together with end-to-end run traces
+              and the model and system configuration. We score the private references
+              and review traces before adding an entry.
+            </p>
+            <ol className="submit-steps">
+              <li><span>1</span> Package predictions</li>
+              <li><span>2</span> Attach traces and configuration</li>
+              <li><span>3</span> Official scoring and review</li>
+            </ol>
+            <div className="coming-soon">
+              <i />
+              Submission email and package template coming soon
             </div>
-          </div>
+          </article>
         </section>
       </main>
 
       <footer className="site-footer">
-        <div>
+        <div className="footer-main">
           <a className="brand brand--footer" href="#top">
             <BrandMark className="brand__mark" />
-            <span><strong>DataSpace</strong><small>Data Agent Benchmark</small></span>
+            <span>
+              <strong>DataSpace</strong>
+              <small>Data Agent Benchmark</small>
+            </span>
           </a>
           <p>Verifiable analytics over heterogeneous workspaces.</p>
         </div>
         <div className="footer-links">
           <a href={resourceLinks.dataset} target="_blank" rel="noreferrer">Dataset</a>
           <a href={resourceLinks.code} target="_blank" rel="noreferrer">GitHub</a>
+          <a href={resourceLinks.competition} target="_blank" rel="noreferrer">KDD Cup 2026</a>
           <a href="#leaderboard">Leaderboard</a>
-          <a href="#submit">Submit</a>
         </div>
         <p className="footer-meta">© 2026 DataSpace Benchmark · HKUST(GZ)</p>
       </footer>

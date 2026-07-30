@@ -153,7 +153,7 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
           </table>
         </div>
         <div className="leaderboard-footer">
-          <span>{visibleMethods.length} trace-verified baselines</span>
+          <span>{visibleMethods.length} trace-verified entries</span>
           <button type="button" onClick={() => document.querySelector('#submit')?.scrollIntoView({ behavior: 'smooth' })}>
             How to submit
           </button>
