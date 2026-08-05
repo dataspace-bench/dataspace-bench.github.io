@@ -21,6 +21,12 @@ const benchmarkFacts = [
 
 const newsItems = [
   {
+    date: 'Aug 2026',
+    title: 'DataSpace paper released on arXiv',
+    detail: 'Read the benchmark design, construction framework, and full evaluation results.',
+    href: resourceLinks.paper,
+  },
+  {
     date: 'Jul 2026',
     title: 'Dataset and baselines released',
     detail: 'All 410 task inputs and 60 public reference packages are now available.',
@@ -72,6 +78,10 @@ function App() {
           </nav>
 
           <div className="header-links">
+            <a href={resourceLinks.paper} target="_blank" rel="noreferrer">
+              Paper
+              <ArrowUpRight />
+            </a>
             <a href={resourceLinks.dataset} target="_blank" rel="noreferrer">
               Dataset
               <ArrowUpRight />
@@ -106,6 +116,10 @@ function App() {
               <a className="primary-link" href={resourceLinks.dataset} target="_blank" rel="noreferrer">
                 <DownloadIcon />
                 Download dataset
+              </a>
+              <a className="secondary-link" href={resourceLinks.paper} target="_blank" rel="noreferrer">
+                Read paper
+                <ArrowUpRight />
               </a>
               <a className="secondary-link" href={resourceLinks.code} target="_blank" rel="noreferrer">
                 <GithubIcon />
@@ -247,6 +261,7 @@ function App() {
           <p>Verifiable analytics over heterogeneous workspaces.</p>
         </div>
         <div className="footer-links">
+          <a href={resourceLinks.paper} target="_blank" rel="noreferrer">Paper</a>
           <a href={resourceLinks.dataset} target="_blank" rel="noreferrer">Dataset</a>
           <a href={resourceLinks.code} target="_blank" rel="noreferrer">GitHub</a>
           <a href={resourceLinks.competition} target="_blank" rel="noreferrer">KDD Cup 2026</a>

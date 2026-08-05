@@ -121,6 +121,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
 ]
 
 export const resourceLinks = {
+  paper: 'https://arxiv.org/abs/2608.03451',
   dataset: 'https://huggingface.co/datasets/HKUSTDial/DataSpace',
   code: 'https://github.com/HKUSTDial/DataSpace',
   competition: 'https://dataagent.top',

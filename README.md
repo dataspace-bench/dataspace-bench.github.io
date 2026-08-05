@@ -3,6 +3,8 @@
 Source for [dataspace-bench.github.io](https://dataspace-bench.github.io), the
 official DataSpace benchmark and leaderboard website.
 
+Paper: [arXiv:2608.03451](https://arxiv.org/abs/2608.03451).
+
 ## Development
 
 ```bash
