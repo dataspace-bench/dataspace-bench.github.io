@@ -66,8 +66,8 @@ function App() {
               rel="noreferrer"
               aria-label="Data Intelligence and Analytics Lab at HKUST Guangzhou"
             >
-              <img src="/hkust-dial-logo-transparent.png" alt="" />
-              <span>DIAL</span>
+              <img src="/dial-lab-logo.png" alt="" />
+              <span>DIAL LAB</span>
             </a>
           </div>
           <h1>DataSpace</h1>
