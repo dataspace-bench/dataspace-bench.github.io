@@ -138,6 +138,29 @@ export function DownloadIcon(props: IconProps) {
   )
 }
 
+export function UploadIcon(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M12 15V3M7 8l5-5 5 5M5 14v6h14v-6" />
+    </svg>
+  )
+}
+
+export function MedalIcon(props: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" aria-hidden="true" {...props}>
+      <path d="M6.8 2.5h4.1l2.5 6.2H9.3z" fill="currentColor" opacity=".72" />
+      <path d="M13.1 2.5h4.1l-2.5 6.2h-4.1z" fill="currentColor" opacity=".92" />
+      <circle cx="12" cy="14.5" r="6.8" fill="currentColor" />
+      <circle cx="12" cy="14.5" r="5.1" fill="none" stroke="#fff" strokeOpacity=".55" />
+      <path
+        d="m12 10.7 1.15 2.32 2.56.38-1.85 1.8.43 2.55L12 16.55l-2.29 1.2.43-2.54-1.85-1.81 2.56-.38z"
+        fill="#fff"
+      />
+    </svg>
+  )
+}
+
 export function BrandMark({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 44 44" aria-hidden="true">

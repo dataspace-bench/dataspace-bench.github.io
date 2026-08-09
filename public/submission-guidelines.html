@@ -1,0 +1,340 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Official package, trace, cost, and evaluation requirements for DataSpace leaderboard submissions."
+    />
+    <link rel="canonical" href="https://dataspace-bench.github.io/submission-guidelines.html" />
+    <title>DataSpace Leaderboard Submission Guidelines</title>
+    <style>
+      :root {
+        font-family: Arial, Helvetica, sans-serif;
+        color: #262b30;
+        background: #f4f6f8;
+        font-synthesis: none;
+      }
+      * { box-sizing: border-box; }
+      body { margin: 0; }
+      a { color: #256f91; text-underline-offset: 2px; }
+      .topbar { height: 8px; background: #326b98; }
+      main {
+        width: min(860px, calc(100% - 32px));
+        margin: 32px auto 64px;
+        padding: 52px 64px 64px;
+        background: #fff;
+        border: 1px solid #d8dde1;
+        box-shadow: 0 5px 22px rgba(24, 38, 52, 0.08);
+      }
+      .eyebrow {
+        margin: 0 0 10px;
+        color: #326b98;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+      h1 {
+        margin: 0;
+        color: #22282d;
+        font-size: clamp(32px, 5vw, 46px);
+        line-height: 1.08;
+        letter-spacing: -0.025em;
+      }
+      .subtitle { margin: 14px 0 0; color: #586168; font-size: 17px; line-height: 1.55; }
+      h2 {
+        margin: 38px 0 12px;
+        padding-bottom: 7px;
+        color: #283137;
+        border-bottom: 1px solid #dce1e4;
+        font-size: 21px;
+      }
+      h3 { margin: 24px 0 8px; font-size: 16px; }
+      p, li { color: #3d444a; font-size: 14.5px; line-height: 1.65; }
+      p { margin: 10px 0; }
+      ul, ol { padding-left: 24px; }
+      li + li { margin-top: 6px; }
+      pre {
+        margin: 14px 0;
+        padding: 16px 18px;
+        overflow-x: auto;
+        color: #2e383f;
+        background: #f4f6f7;
+        border: 1px solid #dce1e4;
+        font: 13px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+      code { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .checklist { padding: 0; list-style: none; }
+      .checklist li::before { content: "□"; margin-right: 9px; color: #326b98; font-weight: 700; }
+      .submission-box {
+        padding: 14px 16px;
+        background: #f2f7fa;
+        border-left: 4px solid #5a93ae;
+      }
+      .requirement-note {
+        padding: 14px 16px;
+        color: #33434c;
+        background: #f1f7fa;
+        border: 1px solid #d2e2e9;
+        border-left: 4px solid #4f89a3;
+      }
+      .key-point { color: #246b86; font-weight: 700; }
+      .prohibition { color: #994b3f; font-weight: 700; }
+      .submission-box strong { color: #225f79; }
+      .policy-note {
+        padding: 14px 16px;
+        color: #54332e;
+        background: #fff4f1;
+        border-left: 4px solid #b86250;
+      }
+      .back-link { display: inline-block; margin-bottom: 28px; font-size: 13px; font-weight: 700; }
+      footer { margin-top: 46px; padding-top: 18px; border-top: 1px solid #dce1e4; color: #747c82; font-size: 12px; }
+      @media (max-width: 640px) {
+        main { width: 100%; margin: 0; padding: 34px 20px 46px; border-right: 0; border-left: 0; box-shadow: none; }
+      }
+      @media print {
+        :root { background: #fff; }
+        .topbar, .back-link { display: none; }
+        main { width: 100%; margin: 0; padding: 0; border: 0; box-shadow: none; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="topbar"></div>
+    <main>
+      <a class="back-link" href="/">← Back to DataSpace</a>
+      <p class="eyebrow">DataSpace Benchmark</p>
+      <h1>Leaderboard Submission Guidelines</h1>
+      <p class="subtitle">Official package and disclosure requirements for submitting a DataSpace result.</p>
+
+      <p>
+        DataSpace evaluates data agents on 410 analytical tasks over heterogeneous, task-local
+        workspaces. This guide describes the required package and disclosure requirements for adding
+        a result to the public leaderboard.
+      </p>
+
+      <h2>1. Before you submit</h2>
+      <ul>
+        <li>Run your system on the complete benchmark without accessing private reference outputs or evaluator configurations.</li>
+        <li>Produce <strong class="key-point">one <code>prediction.csv</code> and one execution trace for each of the 410 tasks</strong>.</li>
+        <li>Preserve an auditable trace for each task, including model usage and cost records, retries, and the final-result selection process when applicable.</li>
+        <li>Calculate costs using the <strong class="key-point">official public list prices</strong> published by the corresponding model providers.</li>
+        <li>Remove API keys, credentials, private URLs, and personal data from all submitted files.</li>
+        <li>Verify the 60 public-reference tasks with the official evaluator before packaging your run.</li>
+      </ul>
+
+      <h2>2. Prediction format</h2>
+      <p>Use the directory structure documented in the DataSpace repository:</p>
+      <pre>predictions/
+└── task_N/
+    └── prediction.csv</pre>
+      <p>
+        Each task directory must contain <strong class="key-point">exactly one final <code>prediction.csv</code></strong> with the complete
+        table returned by the system. Prediction headers and column order are not scored, but row
+        associations and values must be preserved. Missing or malformed predictions count as incorrect
+        for the affected task.
+      </p>
+
+      <h2>3. Submission package</h2>
+      <p class="requirement-note">
+        <strong class="key-point">Required package:</strong> the ZIP archive must contain at least
+        <code>metadata.json</code>, <code>predictions/</code>, and <code>traces/</code>.
+      </p>
+      <pre>method-name.zip
+├── metadata.json
+├── predictions/
+│   └── task_N/prediction.csv
+└── traces/
+    └── task_N/trace.json</pre>
+      <p>
+        Every task ID under <code>predictions/</code> <strong class="key-point">must have a matching task ID</strong> under
+        <code>traces/</code>. Additional supporting files may be included but do not replace any of the
+        three required components.
+      </p>
+
+      <h3><code>metadata.json</code></h3>
+      <p>Use the following structure. The values below are illustrative:</p>
+      <pre>{
+  "schema_version": "1.0",
+  "method_name": "ExampleAgent + Backbone-Model",
+  "organization": "Example Organization",
+  "submission_date": "2026-08-09",
+  "contact": {
+    "name": "First Last",
+    "email": "name@example.org"
+  },
+  "backbone_models": [
+    {
+      "provider": "Provider Name",
+      "model": "model-name",
+      "version": "exact-version-or-snapshot"
+    }
+  ],
+  "cost": {
+    "currency": "USD",
+    "task_count": 410,
+    "total_usd": 69.29,
+    "average_per_task_usd": 0.169,
+    "pricing_date": "2026-08-09",
+    "pricing_sources": [
+      {
+        "provider": "Provider Name",
+        "url": "https://provider.example/official-pricing",
+        "accessed_date": "2026-08-09"
+      }
+    ]
+  },
+  "paper_url": null,
+  "code_url": null
+}</pre>
+      <p>Metadata requirements:</p>
+      <ul>
+        <li>
+          We recommend the display format <strong><code>&lt;Method Name&gt; + &lt;Backbone Model&gt;</code></strong>.
+          For systems using multiple backbone models, name the primary backbone in the method name and
+          list every model under <code>backbone_models</code>.
+        </li>
+        <li>Use the <strong class="key-point">exact provider, model identifier, and version or dated snapshot</strong> used in the submitted run.</li>
+        <li>Use ISO 8601 dates in <code>YYYY-MM-DD</code> format.</li>
+        <li>
+          <strong class="key-point"><code>cost.total_usd</code> must equal the sum of the task-level cost totals</strong> reported across all
+          410 traces. <code>cost.average_per_task_usd</code> must equal <code>cost.total_usd / 410</code>,
+          including failed tasks and all retries. Submit unrounded values where possible; the leaderboard
+          may round them for display.
+        </li>
+        <li><code>paper_url</code> and <code>code_url</code> must be <strong class="key-point">publicly accessible without authentication</strong>. Use <code>null</code> when a resource is not public.</li>
+        <li>Additional metadata fields may be included, but the required fields and types above must remain unchanged.</li>
+      </ul>
+
+      <h3>Execution traces</h3>
+      <p class="requirement-note">
+        <strong class="key-point">Flexible format:</strong> the internal structure of <code>trace.json</code>
+        is not prescribed, and field names and nesting are up to the submitting team.
+        <strong class="key-point">Required evidence:</strong> every trace must still contain enough
+        information to review the run and verify its token usage and cost.
+      </p>
+      <p>Across each task trace, include:</p>
+      <ul>
+        <li>the task ID and the exact provider and model version used;</li>
+        <li>token usage or other provider-native billable units for model calls, including applicable input, output, cached, reasoning, image, audio, video, or other usage categories;</li>
+        <li>cost records for the model calls and retries, together with a task-level cost total that can be reconciled with <code>metadata.json</code>;</li>
+        <li>the model and tool interactions needed to understand how the final prediction was produced; and</li>
+        <li>when multiple candidate runs are used, sufficient evidence of the autonomous selection or aggregation process.</li>
+      </ul>
+      <p>
+        Timestamps are <strong class="key-point">strongly recommended</strong> because they make a trace easier to verify. When available,
+        use ISO 8601 UTC timestamps for task start and end, model and tool calls, retries, candidate
+        generation, and final selection. Provider-native logs may be submitted directly if they contain
+        the required usage and cost information. Do not invent token equivalents for non-token billing
+        units, and do not double-count overlapping usage fields.
+      </p>
+
+      <h3>Cost calculation policy</h3>
+      <ul>
+        <li>Price every hosted model call using the <strong class="key-point">official public list price</strong> published by its provider, such as OpenAI, Google, Anthropic, or DeepSeek, and applicable on <code>cost.pricing_date</code>.</li>
+        <li>Use the rate for the <strong class="key-point">exact model and request mode</strong> used, including any applicable context-length tier, cache rate, batch rate, or multimodal billing unit.</li>
+        <li>Calculate leaderboard cost from official list prices even when the submitter used free credits, enterprise discounts, promotional pricing, or a reseller rate.</li>
+        <li>Include all model calls made during the 410-task run, including failed calls and retries. Itemize other paid APIs or services separately and include them in the task-level cost total.</li>
+        <li>Every provider used in the traces must have an official pricing URL in <code>cost.pricing_sources</code>. If no official public price exists, contact the DataSpace team before submitting rather than using a third-party estimate.</li>
+        <li>The task-level cost totals across all 410 traces <strong class="key-point">must reconcile with <code>metadata.json</code></strong>.</li>
+      </ul>
+      <p>Do not include secrets. Redact credentials and private service details while preserving the information needed to review the run.</p>
+
+      <h2>4. Multiple runs and final-result selection</h2>
+      <p>
+        Participants may conduct multiple runs for the same task using different prompts, methods,
+        frameworks, tools, or models. Multiple runs are permitted only under the following conditions:
+      </p>
+      <ul>
+        <li>Submit <strong class="key-point">exactly one final <code>prediction.csv</code></strong> for each task. The official evaluator considers only this final file.</li>
+        <li>When multiple candidate results are generated, the final result must be selected or aggregated <strong class="key-point">autonomously by the submitted system</strong> using a predefined protocol, such as majority voting, self-consistency, or a fixed model-based selection procedure.</li>
+        <li>Declare the selection protocol before evaluation and describe it in the submitted trace. The protocol <strong class="prohibition">must not depend on reference answers, evaluator feedback, or task-specific human judgment</strong>.</li>
+        <li><strong class="prohibition">Do not manually select, edit, replace, or retain a candidate</strong> because it appears closer to a known or expected answer.</li>
+        <li>Preserve sufficient trace evidence for every candidate run considered by the selection procedure, including its usage and cost and how the autonomous final selection was made. Candidate identifiers and timestamps are strongly recommended. Logs should be generated during execution rather than reconstructed after evaluation.</li>
+        <li><strong class="prohibition">Post-hoc replacement</strong> of a submitted prediction after inspecting evaluator output is not permitted.</li>
+      </ul>
+      <p class="policy-note">
+        <strong>Eligibility rule:</strong> A submission that uses manual answer-informed selection,
+        omits relevant candidate runs, or submits multiple final results for a task is ineligible for
+        the leaderboard and may be removed if the violation is discovered after publication.
+      </p>
+
+      <h2>5. Evaluation and review</h2>
+      <ol>
+        <li>The organizers check that the archive is complete and readable.</li>
+        <li>Predictions are evaluated against the private 410-task reference set with the frozen official evaluator.</li>
+        <li>Trace evidence for final-result selection is checked for compliance with the autonomous-selection policy.</li>
+        <li>The metadata summary is reconciled against the token and cost records in all 410 traces; representative full traces may also be manually reviewed.</li>
+        <li>The team may contact the submitter to resolve missing information or reproducibility questions.</li>
+        <li>After confirmation, the result is added to the public leaderboard.</li>
+      </ol>
+      <p>
+        The primary ranking metric is <strong>Task Accuracy</strong>. Ties may be displayed with the same
+        rank; cost is reported for context and is not currently a ranking metric.
+      </p>
+
+      <h2>6. Leaderboard entry</h2>
+      <p>The public entry is expected to include:</p>
+      <ul>
+        <li>method, backbone, and organization;</li>
+        <li>Task Accuracy and average cost per task;</li>
+        <li>paper or technical report;</li>
+        <li>code or reproducibility materials;</li>
+        <li>evaluation month.</li>
+      </ul>
+
+      <h2>7. Fair-use and disclosure rules</h2>
+      <ul>
+        <li><strong class="prohibition">Do not use private reference outputs, leaked answers, or private evaluator configurations.</strong></li>
+        <li><strong class="prohibition">Do not manually select or edit final results.</strong> Disclose any other human operational intervention, external retrieval, proprietary tools, and retries.</li>
+        <li>Submit one clearly identified configuration per entry; materially different configurations use separate entries.</li>
+        <li>Use a working team contact address. Additional evidence may be requested when a result cannot be interpreted.</li>
+      </ul>
+
+      <h2>8. Submission checklist</h2>
+      <ul class="checklist">
+        <li>Exactly one final prediction is included for each of the 410 tasks</li>
+        <li>410 matching end-to-end traces included</li>
+        <li>Trace timestamps are included where available (strongly recommended)</li>
+        <li>Sufficient evidence for all candidate runs and autonomous final selection is retained when multiple runs are used</li>
+        <li>Final-selection protocol is predefined and disclosed</li>
+        <li>Public 60-task evaluation completed successfully</li>
+        <li>Metadata follows the required JSON structure</li>
+        <li>Recommended method naming format includes the backbone model</li>
+        <li>Provider and exact model versions are pinned</li>
+        <li>Average cost is calculated across all 410 tasks</li>
+        <li>Official provider pricing sources and dates are included</li>
+        <li>Traces contain sufficient token or billable-usage and cost records for review</li>
+        <li>Secrets and credentials removed</li>
+        <li>Paper and code links are publicly accessible or set to <code>null</code></li>
+        <li>Archive opens correctly</li>
+      </ul>
+
+      <h2>9. How to submit</h2>
+      <div class="submission-box">
+        <p>
+          Email the completed submission package to
+          <strong><a href="mailto:dataspace.bench@gmail.com">dataspace.bench@gmail.com</a></strong>.
+        </p>
+        <p>
+          Use the subject line
+          <strong><code>[DataSpace Leaderboard Submission] &lt;Method Name&gt; + &lt;Backbone Model&gt;</code></strong>.
+          Attach the ZIP archive directly when possible. If it exceeds the email attachment limit,
+          include a stable download link and ensure that the DataSpace team can access it throughout
+          the review period.
+        </p>
+      </div>
+      <p>
+        For questions about the dataset, evaluator, or submission process, open an issue in the
+        <a href="https://github.com/HKUSTDial/DataSpace/issues" target="_blank" rel="noreferrer">DataSpace repository</a>.
+      </p>
+
+      <h2>Document version</h2>
+      <p><strong>Version 1.0 — August 2026.</strong></p>
+
+      <footer>DataSpace Benchmark · HKUST(GZ) · Official Submission Guidelines</footer>
+    </main>
+  </body>
+</html>
