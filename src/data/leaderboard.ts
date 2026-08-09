@@ -7,6 +7,7 @@ export type LeaderboardMethod = {
   accuracy: number
   correct: number
   costPerTask: number | null
+  paperUrl: string | null
   codeUrl: string | null
   evaluated: string
   snapshot: string
@@ -14,6 +15,8 @@ export type LeaderboardMethod = {
   accent: string
   openWeight: boolean
 }
+
+const dataSpacePaperUrl = 'https://arxiv.org/abs/2608.03451'
 
 export const leaderboardMethods: LeaderboardMethod[] = [
   {
@@ -26,6 +29,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     accuracy: 66.34,
     correct: 272,
     costPerTask: 0.169,
+    paperUrl: dataSpacePaperUrl,
     codeUrl: 'https://github.com/HKUSTDial/DataSpace/tree/main/baseline',
     evaluated: '2026-07-24',
     snapshot: 'xai/grok-4.5 · 2026-07',
@@ -43,6 +47,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     accuracy: 64.63,
     correct: 265,
     costPerTask: 0.2,
+    paperUrl: dataSpacePaperUrl,
     codeUrl: 'https://github.com/HKUSTDial/DataSpace/tree/main/baseline',
     evaluated: '2026-07-24',
     snapshot: 'openai/gpt-5.6-sol · 2026-07',
@@ -60,6 +65,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     accuracy: 53.41,
     correct: 219,
     costPerTask: 0.235,
+    paperUrl: dataSpacePaperUrl,
     codeUrl: 'https://github.com/HKUSTDial/DataSpace/tree/main/baseline',
     evaluated: '2026-07-24',
     snapshot: 'moonshotai/kimi-k3 · 2026-07',
@@ -77,6 +83,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     accuracy: 39.27,
     correct: 161,
     costPerTask: 0.011,
+    paperUrl: dataSpacePaperUrl,
     codeUrl: 'https://github.com/HKUSTDial/DataSpace/tree/main/baseline',
     evaluated: '2026-07-24',
     snapshot: 'xiaomi/mimo-v2.5 · 2026-04',
@@ -94,6 +101,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     accuracy: 32.93,
     correct: 135,
     costPerTask: 0.224,
+    paperUrl: dataSpacePaperUrl,
     codeUrl: 'https://github.com/HKUSTDial/DataSpace/tree/main/baseline',
     evaluated: '2026-07-24',
     snapshot: 'anthropic/claude-sonnet-5 · 2026-06',
@@ -111,6 +119,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     accuracy: 28.54,
     correct: 117,
     costPerTask: 0.042,
+    paperUrl: dataSpacePaperUrl,
     codeUrl: 'https://github.com/HKUSTDial/DataSpace/tree/main/baseline',
     evaluated: '2026-07-24',
     snapshot: 'minimax/minimax-m3 · 2026-06',
