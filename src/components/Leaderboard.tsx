@@ -37,7 +37,15 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
                   <time dateTime={method.evaluated}>{formatDate(method.evaluated)}</time>
                 </td>
                 <td className="method-column">
-                  <strong>{method.method} + {method.backbone}</strong>
+                  <strong>
+                    {method.websiteUrl ? (
+                      <a href={method.websiteUrl} target="_blank" rel="noreferrer">
+                        {method.method} + {method.backbone}
+                      </a>
+                    ) : (
+                      <>{method.method} + {method.backbone}</>
+                    )}
+                  </strong>
                   <em>{method.organization}</em>
                 </td>
                 <td className="numeric score-column">{method.accuracy.toFixed(2)}</td>

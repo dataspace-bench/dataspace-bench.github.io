@@ -26,6 +26,11 @@ Official entries are maintained in
 correspond to a score produced by the private 410-task evaluator after the
 DataSpace team has reviewed its submitted predictions and execution traces.
 
+Local submission archives and versioned evaluation records live in the
+Git-ignored `leaderboard-private/` directory. See
+[`docs/leaderboard-maintenance.md`](docs/leaderboard-maintenance.md) for intake,
+evaluation, backups, and dataset-version refresh commands.
+
 ## Deployment
 
 Pushes to `main` are built and deployed through GitHub Actions. The repository

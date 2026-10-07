@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Local leaderboard submissions, private references, and evaluation history
+/leaderboard-private/
+__pycache__/

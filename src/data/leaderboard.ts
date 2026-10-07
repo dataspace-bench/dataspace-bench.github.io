@@ -9,6 +9,7 @@ export type LeaderboardMethod = {
   costPerTask: number | null
   paperUrl: string | null
   codeUrl: string | null
+  websiteUrl?: string
   evaluated: string
   snapshot: string
   benchmarkVersion: string
@@ -19,6 +20,25 @@ export type LeaderboardMethod = {
 const dataSpacePaperUrl = 'https://arxiv.org/abs/2608.03451'
 
 export const leaderboardMethods: LeaderboardMethod[] = [
+  {
+    id: 'jamlabs-jittobuild-claude-opus-55',
+    method: 'Jitto Build',
+    backbone: 'Claude Opus 5.5',
+    organization: 'JamLabs',
+    description:
+      'Single attempt per task with high reasoning effort and local tools via Claude Code CLI 2.1.280; task_197 has no submitted prediction and counts as incorrect.',
+    accuracy: 81.22,
+    correct: 333,
+    costPerTask: 0.2088263956097561,
+    paperUrl: null,
+    codeUrl: null,
+    websiteUrl: 'https://jitto.ai',
+    evaluated: '2026-10-07',
+    snapshot: 'anthropic/claude-opus-5-5 · high effort',
+    benchmarkVersion: 'DataSpace · 410 tasks',
+    accent: '#e8b28b',
+    openWeight: false,
+  },
   {
     id: 'dataspace-grok-45',
     method: 'DataSpace-Agent',
