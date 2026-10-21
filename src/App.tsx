@@ -11,6 +11,12 @@ import { leaderboardMethods, resourceLinks } from './data/leaderboard'
 const newsItems = [
   {
     date: '2026-10',
+    title: 'codex-controlled + Qwen3.8-Flash added to the leaderboard.',
+    detail: 'yjdy achieves 81.22% Task Accuracy (333/410), sharing first place. Cost is reported for recorded usage.',
+    href: '#leaderboard',
+  },
+  {
+    date: '2026-10',
     title: 'Jitto Build + Claude Opus 5.5 added to the leaderboard.',
     detail: 'JamLabs achieves 81.22% Task Accuracy (333/410) on the official benchmark.',
     href: '#leaderboard',

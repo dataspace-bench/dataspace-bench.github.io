@@ -27,12 +27,15 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
             </tr>
           </thead>
           <tbody>
-            {rankedMethods.map((method, index) => (
+            {rankedMethods.map((method) => {
+              const rank = rankedMethods.findIndex((entry) => entry.correct === method.correct) + 1
+
+              return (
               <tr key={method.id}>
                 <td className="rank-column">
-                  <span className={`rank-position rank-position--${index + 1}`}>
-                    {index < 3 && <MedalIcon className="rank-medal" />}
-                    <strong>{index + 1}</strong>
+                  <span className={`rank-position rank-position--${rank}`}>
+                    {rank <= 3 && <MedalIcon className="rank-medal" />}
+                    <strong>{rank}</strong>
                   </span>
                   <time dateTime={method.evaluated}>{formatDate(method.evaluated)}</time>
                 </td>
@@ -47,10 +50,12 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
                     )}
                   </strong>
                   <em>{method.organization}</em>
+                  {method.submissionNote && <small className="method-note">{method.submissionNote}</small>}
                 </td>
                 <td className="numeric score-column">{method.accuracy.toFixed(2)}</td>
                 <td className="numeric optional-column">
                   {method.costPerTask === null ? '—' : `$${method.costPerTask.toFixed(3)}`}
+                  {method.costNote && <a className="cost-note-marker" href={`#cost-note-${method.id}`} aria-label={`Cost disclosure for ${method.method}`}>*</a>}
                 </td>
                 <td className="center resource-column">
                   {method.paperUrl ? (
@@ -79,10 +84,16 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
                   ) : '—'}
                 </td>
               </tr>
-            ))}
+              )
+            })}
           </tbody>
         </table>
       </div>
+      {rankedMethods.filter((method) => method.costNote).map((method) => (
+        <p className="leaderboard-note" id={`cost-note-${method.id}`} key={method.id}>
+          * {method.method}: {method.costNote}
+        </p>
+      ))}
     </div>
   )
 }

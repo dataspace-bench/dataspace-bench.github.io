@@ -392,6 +392,26 @@
   line-height: 1.35;
 }
 
+.method-note {
+  display: block;
+  max-width: 380px;
+  margin-top: 5px;
+  color: #626b73;
+  font-size: 11px;
+  line-height: 1.4;
+}
+
+.cost-note-marker {
+  margin-left: 2px;
+}
+
+.leaderboard-note {
+  margin: 12px 0 0;
+  color: #555d64;
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .score-column {
   color: #20262a !important;
   font-size: 16px !important;
