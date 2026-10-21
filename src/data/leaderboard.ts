@@ -23,6 +23,24 @@ const dataSpacePaperUrl = 'https://arxiv.org/abs/2608.03451'
 
 export const leaderboardMethods: LeaderboardMethod[] = [
   {
+    id: 'yjdy-codex-controlled-qwen38-flash',
+    method: 'codex-controlled',
+    backbone: 'Qwen3.8-Flash',
+    organization: 'Independent Researcher',
+    description:
+      'Codex CLI 0.145.0 with external control code and modified task instructions (relation-v6, simple-fixes-v1). All 414 attempts are retained; four missing-output tasks received one operator-triggered recovery retry each.',
+    accuracy: 81.22,
+    correct: 333,
+    costPerTask: 0.02712083399355642,
+    paperUrl: null,
+    codeUrl: null,
+    evaluated: '2026-10-21',
+    snapshot: 'qwen3.8-flash · requested model alias',
+    benchmarkVersion: 'DataSpace · 410 tasks',
+    accent: '#6b9dc2',
+    openWeight: false,
+  },
+  {
     id: 'jamlabs-jittobuild-claude-opus-55',
     method: 'Jitto Build',
     backbone: 'Claude Opus 5.5',
@@ -39,27 +57,6 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     snapshot: 'anthropic/claude-opus-5-5 · high effort',
     benchmarkVersion: 'DataSpace · 410 tasks',
     accent: '#e8b28b',
-    openWeight: false,
-  },
-  {
-    id: 'yjdy-codex-controlled-qwen38-flash',
-    method: 'codex-controlled',
-    backbone: 'Qwen3.8-Flash',
-    organization: 'yjdy · Independent Researcher',
-    description:
-      'Codex CLI 0.145.0 with external control code and modified task instructions (relation-v6, simple-fixes-v1). All 414 attempts are retained; four missing-output tasks received one operator-triggered recovery retry each.',
-    accuracy: 81.22,
-    correct: 333,
-    costPerTask: 0.02712083399355642,
-    costNote:
-      'Reported cost covers recorded usage and excludes three initial failed attempts without usage records.',
-    submissionNote: 'Custom Codex CLI 0.145.0; four operator-triggered recovery retries.',
-    paperUrl: null,
-    codeUrl: null,
-    evaluated: '2026-10-21',
-    snapshot: 'qwen3.8-flash · requested model alias',
-    benchmarkVersion: 'DataSpace · 410 tasks',
-    accent: '#6b9dc2',
     openWeight: false,
   },
   {

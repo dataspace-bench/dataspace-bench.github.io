@@ -12,7 +12,7 @@ const newsItems = [
   {
     date: '2026-10',
     title: 'codex-controlled + Qwen3.8-Flash added to the leaderboard.',
-    detail: 'yjdy achieves 81.22% Task Accuracy (333/410), sharing first place. Cost is reported for recorded usage.',
+    detail: 'An independent researcher achieves 81.22% Task Accuracy (333/410), sharing first place.',
     href: '#leaderboard',
   },
   {
