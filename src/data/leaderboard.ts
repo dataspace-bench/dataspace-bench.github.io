@@ -33,7 +33,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     correct: 333,
     costPerTask: 0.02712083399355642,
     paperUrl: null,
-    codeUrl: null,
+    codeUrl: 'https://github.com/yjdy/eviweave',
     evaluated: '2026-10-21',
     snapshot: 'qwen3.8-flash · requested model alias',
     benchmarkVersion: 'DataSpace · 410 tasks',
