@@ -1,5 +1,7 @@
+import { useState } from 'react'
 import type { LeaderboardMethod } from '../data/leaderboard'
-import { DocumentIcon, GithubIcon, MedalIcon } from './Icons'
+import { orderLeaderboard } from '../data/leaderboardOrder'
+import { DocumentIcon, GithubIcon, MedalIcon, RotateIcon } from './Icons'
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat('en', {
@@ -10,12 +12,31 @@ function formatDate(value: string) {
 }
 
 export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
-  const rankedMethods = [...methods].sort((a, b) => b.accuracy - a.accuracy)
+  const [tieStart] = useState(Math.random)
+  const [tieRotation, setTieRotation] = useState(0)
+  const rankedMethods = orderLeaderboard(methods, tieStart, tieRotation)
+  const hasTies = new Set(methods.map((method) => method.correct)).size < methods.length
 
   return (
     <div className="leaderboard">
+      {hasTies && (
+        <div className="leaderboard-toolbar">
+          <p id="tie-order-note">Tied methods share a rank. Initial display order is random.</p>
+          <button
+            className="tie-order-button"
+            type="button"
+            aria-controls="leaderboard-table"
+            aria-describedby="tie-order-note"
+            title="Cycle the display order of tied methods"
+            onClick={() => setTieRotation((rotation) => rotation + 1)}
+          >
+            <RotateIcon />
+            Reorder ties
+          </button>
+        </div>
+      )}
       <div className="leaderboard-table-wrap">
-        <table className="leaderboard-table">
+        <table className="leaderboard-table" id="leaderboard-table">
           <thead>
             <tr>
               <th className="rank-column">Rank</th>
@@ -27,11 +48,8 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
             </tr>
           </thead>
           <tbody>
-            {rankedMethods.map((method) => {
-              const rank = rankedMethods.findIndex((entry) => entry.correct === method.correct) + 1
-
-              return (
-              <tr key={method.id}>
+            {rankedMethods.map(({ method, rank }) => (
+              <tr key={method.id} className={rank === 1 ? 'leaderboard-row--first' : undefined}>
                 <td className="rank-column">
                   <span className={`rank-position rank-position--${rank}`}>
                     {rank <= 3 && <MedalIcon className="rank-medal" />}
@@ -84,12 +102,11 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
                   ) : '—'}
                 </td>
               </tr>
-              )
-            })}
+            ))}
           </tbody>
         </table>
       </div>
-      {rankedMethods.filter((method) => method.costNote).map((method) => (
+      {rankedMethods.filter(({ method }) => method.costNote).map(({ method }) => (
         <p className="leaderboard-note" id={`cost-note-${method.id}`} key={method.id}>
           * {method.method}: {method.costNote}
         </p>
