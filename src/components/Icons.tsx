@@ -45,14 +45,6 @@ export function ChevronDownIcon(props: IconProps) {
   )
 }
 
-export function RotateIcon(props: IconProps) {
-  return (
-    <svg {...base} {...props}>
-      <path d="M20 7v5h-5M19.4 12a7.5 7.5 0 1 0-1.8 5.2" />
-    </svg>
-  )
-}
-
 export function GithubIcon(props: IconProps) {
   return (
     <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" {...props}>

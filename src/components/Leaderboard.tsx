@@ -1,7 +1,6 @@
-import { useState } from 'react'
 import type { LeaderboardMethod } from '../data/leaderboard'
 import { orderLeaderboard } from '../data/leaderboardOrder'
-import { DocumentIcon, GithubIcon, MedalIcon, RotateIcon } from './Icons'
+import { DocumentIcon, GithubIcon, MedalIcon } from './Icons'
 
 function formatDate(value: string) {
   return new Intl.DateTimeFormat('en', {
@@ -12,29 +11,10 @@ function formatDate(value: string) {
 }
 
 export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
-  const [tieStart] = useState(Math.random)
-  const [tieRotation, setTieRotation] = useState(0)
-  const rankedMethods = orderLeaderboard(methods, tieStart, tieRotation)
-  const hasTies = new Set(methods.map((method) => method.correct)).size < methods.length
+  const rankedMethods = orderLeaderboard(methods)
 
   return (
     <div className="leaderboard">
-      {hasTies && (
-        <div className="leaderboard-toolbar">
-          <p id="tie-order-note">Tied methods share a rank. Initial display order is random.</p>
-          <button
-            className="tie-order-button"
-            type="button"
-            aria-controls="leaderboard-table"
-            aria-describedby="tie-order-note"
-            title="Cycle the display order of tied methods"
-            onClick={() => setTieRotation((rotation) => rotation + 1)}
-          >
-            <RotateIcon />
-            Reorder ties
-          </button>
-        </div>
-      )}
       <div className="leaderboard-table-wrap">
         <table className="leaderboard-table" id="leaderboard-table">
           <thead>
