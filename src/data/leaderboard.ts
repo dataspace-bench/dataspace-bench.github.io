@@ -13,6 +13,7 @@ export type LeaderboardMethod = {
   codeUrl: string | null
   websiteUrl?: string
   evaluated: string
+  published?: string
   snapshot: string
   benchmarkVersion: string
   accent: string
@@ -22,6 +23,25 @@ export type LeaderboardMethod = {
 const dataSpacePaperUrl = 'https://arxiv.org/abs/2608.03451'
 
 export const leaderboardMethods: LeaderboardMethod[] = [
+  {
+    id: 'guandata-decidex-gpt61-terra',
+    method: 'DecideX',
+    backbone: 'gpt-6.1-terra',
+    organization: 'Guandata',
+    description:
+      'DecideX with gpt-6.1-terra on Azure OpenAI. Seven tasks were retried under a declared execution-status policy; the displayed cost uses the recorded subtotal and excludes one unverified disconnected request.',
+    accuracy: 88.54,
+    correct: 363,
+    costPerTask: 0.09511230329268293,
+    paperUrl: null,
+    codeUrl: null,
+    evaluated: '2026-11-20',
+    published: '2026-11-20',
+    snapshot: 'gpt-6.1-terra · 2026-10-26 · high effort',
+    benchmarkVersion: 'DataSpace · 410 tasks',
+    accent: '#55b8e8',
+    openWeight: false,
+  },
   {
     id: 'yjdy-eviweave-v8-qwen38-flash',
     method: 'EviWeave V8',
@@ -35,6 +55,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     paperUrl: null,
     codeUrl: 'https://github.com/yjdy/eviweave',
     evaluated: '2026-11-20',
+    published: '2026-11-20',
     snapshot: 'qwen3.8-flash · requested model alias',
     benchmarkVersion: 'DataSpace · 410 tasks',
     accent: '#6b9dc2',
@@ -53,6 +74,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     paperUrl: null,
     codeUrl: 'https://github.com/yjdy/eviweave',
     evaluated: '2026-10-21',
+    published: '2026-10-21',
     snapshot: 'qwen3.8-flash · requested model alias',
     benchmarkVersion: 'DataSpace · 410 tasks',
     accent: '#6b9dc2',
@@ -72,6 +94,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     codeUrl: null,
     websiteUrl: 'https://jitto.ai',
     evaluated: '2026-10-07',
+    published: '2026-10-07',
     snapshot: 'anthropic/claude-opus-5-5 · high effort',
     benchmarkVersion: 'DataSpace · 410 tasks',
     accent: '#e8b28b',

@@ -1,5 +1,7 @@
+import { useEffect, useState } from 'react'
 import type { LeaderboardMethod } from '../data/leaderboard'
 import { orderLeaderboard } from '../data/leaderboardOrder'
+import { isRecentSubmission } from '../data/recentSubmission'
 import { DocumentIcon, GithubIcon, MedalIcon } from './Icons'
 
 function formatDate(value: string) {
@@ -12,6 +14,12 @@ function formatDate(value: string) {
 
 export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
   const rankedMethods = orderLeaderboard(methods)
+  const [now, setNow] = useState(Date.now)
+
+  useEffect(() => {
+    const timer = window.setInterval(() => setNow(Date.now()), 60_000)
+    return () => window.clearInterval(timer)
+  }, [])
 
   return (
     <div className="leaderboard">
@@ -45,6 +53,9 @@ export function Leaderboard({ methods }: { methods: LeaderboardMethod[] }) {
                       </a>
                     ) : (
                       <>{method.method} + {method.backbone}</>
+                    )}
+                    {isRecentSubmission(method.published ?? method.evaluated, now) && (
+                      <span className="new-badge" aria-label="New leaderboard entry in the past 30 days">NEW</span>
                     )}
                   </strong>
                   <em>{method.organization}</em>
