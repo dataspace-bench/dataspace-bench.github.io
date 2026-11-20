@@ -26,10 +26,10 @@ export const leaderboardMethods: LeaderboardMethod[] = [
   {
     id: 'guandata-decidex-gpt61-terra',
     method: 'DecideX',
-    backbone: 'gpt-6.1-terra',
+    backbone: 'GPT-6.1-Terra',
     organization: 'Guandata',
     description:
-      'DecideX with gpt-6.1-terra on Azure OpenAI. Seven tasks were retried under a declared execution-status policy; the displayed cost uses the recorded subtotal and excludes one unverified disconnected request.',
+      'DecideX with GPT-6.1-Terra on Azure OpenAI. Seven tasks were retried under a declared execution-status policy; the displayed cost uses the recorded subtotal and excludes one unverified disconnected request.',
     accuracy: 88.54,
     correct: 363,
     costPerTask: 0.09511230329268293,
