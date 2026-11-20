@@ -10,6 +10,12 @@ import { leaderboardMethods, resourceLinks } from './data/leaderboard'
 
 const newsItems = [
   {
+    date: '2026-11',
+    title: 'EviWeave V8 + Qwen3.8-Flash added to the leaderboard.',
+    detail: 'An independent researcher achieves 81.95% Task Accuracy (336/410).',
+    href: '#leaderboard',
+  },
+  {
     date: '2026-10',
     title: 'codex-controlled + Qwen3.8-Flash added to the leaderboard.',
     detail: 'An independent researcher achieves 81.22% Task Accuracy (333/410), sharing first place.',

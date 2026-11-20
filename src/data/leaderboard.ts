@@ -23,6 +23,24 @@ const dataSpacePaperUrl = 'https://arxiv.org/abs/2608.03451'
 
 export const leaderboardMethods: LeaderboardMethod[] = [
   {
+    id: 'yjdy-eviweave-v8-qwen38-flash',
+    method: 'EviWeave V8',
+    backbone: 'Qwen3.8-Flash',
+    organization: 'Independent Researcher',
+    description:
+      'EviWeave V8 with Qwen3.8-Flash. The submitted public-reference batch was selected after its score was known; the displayed cost uses the submitter’s recorded-usage subtotal.',
+    accuracy: 81.95,
+    correct: 336,
+    costPerTask: 18.16 / 410,
+    paperUrl: null,
+    codeUrl: 'https://github.com/yjdy/eviweave',
+    evaluated: '2026-11-20',
+    snapshot: 'qwen3.8-flash · requested model alias',
+    benchmarkVersion: 'DataSpace · 410 tasks',
+    accent: '#6b9dc2',
+    openWeight: false,
+  },
+  {
     id: 'yjdy-codex-controlled-qwen38-flash',
     method: 'codex-controlled',
     backbone: 'Qwen3.8-Flash',
