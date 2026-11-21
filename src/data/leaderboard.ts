@@ -123,7 +123,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     id: 'dataspace-grok-45',
     method: 'DataSpace-Agent',
     backbone: 'Grok 4.5',
-    organization: 'DataSpace Team',
+    organization: 'DataSpace Team (Official Baseline)',
     description:
       'Controlled ReAct-style baseline with a multimodal Grok 4.5 backbone and three task-agnostic tools.',
     accuracy: 66.34,
@@ -141,7 +141,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     id: 'dataspace-gpt-56-sol',
     method: 'DataSpace-Agent',
     backbone: 'GPT-5.6 Sol',
-    organization: 'DataSpace Team',
+    organization: 'DataSpace Team (Official Baseline)',
     description:
       'The same controlled agent implementation paired with OpenAI GPT-5.6 Sol under provider-default reasoning.',
     accuracy: 64.63,
@@ -159,7 +159,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     id: 'dataspace-kimi-k3',
     method: 'DataSpace-Agent',
     backbone: 'Kimi K3',
-    organization: 'DataSpace Team',
+    organization: 'DataSpace Team (Official Baseline)',
     description:
       'Controlled DataSpace-Agent baseline using the open-weight Kimi K3 multimodal backbone.',
     accuracy: 53.41,
@@ -177,7 +177,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     id: 'dataspace-mimo-v25',
     method: 'DataSpace-Agent',
     backbone: 'MiMo-V2.5',
-    organization: 'DataSpace Team',
+    organization: 'DataSpace Team (Official Baseline)',
     description:
       'Controlled DataSpace-Agent baseline using the open-weight MiMo-V2.5 multimodal backbone.',
     accuracy: 39.27,
@@ -195,7 +195,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     id: 'dataspace-claude-sonnet-5',
     method: 'DataSpace-Agent',
     backbone: 'Claude Sonnet 5',
-    organization: 'DataSpace Team',
+    organization: 'DataSpace Team (Official Baseline)',
     description:
       'The controlled baseline paired with Claude Sonnet 5 and the same local data-workbench boundary.',
     accuracy: 32.93,
@@ -213,7 +213,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     id: 'dataspace-minimax-m3',
     method: 'DataSpace-Agent',
     backbone: 'MiniMax M3',
-    organization: 'DataSpace Team',
+    organization: 'DataSpace Team (Official Baseline)',
     description:
       'Controlled DataSpace-Agent baseline using the open-weight MiniMax M3 multimodal backbone.',
     accuracy: 28.54,
