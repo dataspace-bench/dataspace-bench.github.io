@@ -24,6 +24,25 @@ const dataSpacePaperUrl = 'https://arxiv.org/abs/2608.03451'
 
 export const leaderboardMethods: LeaderboardMethod[] = [
   {
+    id: 'guandata-decidex-evolving-gpt61-terra',
+    method: 'DecideX Evolving',
+    backbone: 'GPT-6.1-Terra',
+    organization: 'Guandata',
+    description:
+      'DecideX Evolving with GPT-6.1-Terra on Azure OpenAI, using a solve stage followed by an independent review stage.',
+    accuracy: 93.17,
+    correct: 382,
+    costPerTask: 62.8775259 / 410,
+    paperUrl: null,
+    codeUrl: null,
+    evaluated: '2026-11-26',
+    published: '2026-11-27',
+    snapshot: 'gpt-6.1-terra · 2026-10-26',
+    benchmarkVersion: 'DataSpace · 410 tasks',
+    accent: '#55b8e8',
+    openWeight: false,
+  },
+  {
     id: 'guandata-decidex-gpt61-terra',
     method: 'DecideX',
     backbone: 'GPT-6.1-Terra',
