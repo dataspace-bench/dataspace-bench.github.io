@@ -36,7 +36,7 @@ export const leaderboardMethods: LeaderboardMethod[] = [
     paperUrl: null,
     codeUrl: null,
     evaluated: '2026-11-26',
-    published: '2026-11-27',
+    published: '2026-11-26',
     snapshot: 'gpt-6.1-terra · 2026-10-26',
     benchmarkVersion: 'DataSpace · 410 tasks',
     accent: '#55b8e8',
