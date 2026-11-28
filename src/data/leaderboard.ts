@@ -24,6 +24,25 @@ const dataSpacePaperUrl = 'https://arxiv.org/abs/2608.03451'
 
 export const leaderboardMethods: LeaderboardMethod[] = [
   {
+    id: 'jin-zhang-antigravity-codex-heterogeneous-v5',
+    method: 'Antigravity + Codex Heterogeneous Verification',
+    backbone: 'GPT-6.1-Terra & Gemini 4 Neon',
+    organization: 'Independent Researcher',
+    description:
+      'Heterogeneous verification using Codex and Antigravity. The displayed cost uses the submitter’s declared total.',
+    accuracy: 91.46,
+    correct: 375,
+    costPerTask: 449.4988 / 410,
+    paperUrl: null,
+    codeUrl: null,
+    evaluated: '2026-11-28',
+    published: '2026-11-28',
+    snapshot: 'gpt-6.1-terra · gemini-4-neon-high',
+    benchmarkVersion: 'DataSpace · 410 tasks',
+    accent: '#8b7cf6',
+    openWeight: false,
+  },
+  {
     id: 'guandata-decidex-evolving-gpt61-terra',
     method: 'DecideX Evolving',
     backbone: 'GPT-6.1-Terra',
